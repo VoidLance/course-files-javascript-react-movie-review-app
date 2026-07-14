@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="450" viewBox="0 0 300 450" role="img" aria-label="Movie poster placeholder">
+  <rect width="300" height="450" fill="#0f172a" />
+  <rect x="24" y="24" width="252" height="402" fill="#1e293b" stroke="#fbbf24" stroke-width="4" />
+  <circle cx="150" cy="160" r="56" fill="#f59e0b" />
+  <rect x="60" y="250" width="180" height="18" rx="9" fill="#e2e8f0" />
+  <rect x="80" y="290" width="140" height="14" rx="7" fill="#94a3b8" />
+  <rect x="70" y="320" width="160" height="14" rx="7" fill="#64748b" />
+  <text x="150" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#fbbf24">Poster</text>
+</svg>

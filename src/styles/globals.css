@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  
+  /* Custom color palette matching Header component */
+  --color-amber-100: #fbbf24;
+  --color-rose-400: #f43f5e;
+  --color-taupe-500: #8b7355;
+  --color-mist-700: #2d2d2d;
+}
+
+@font-face {
+    font-family: 'Carrois Gothic SC';
+    src: url('./transfonter.org-20260222-182346/CarroisGothicSC-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Color Scheme - Matching Header Component */
+:root {
+  /* Primary Colors */
+  --color-primary: #fbbf24; /* Amber-100 */
+  --color-primary-dark: #f59e0b; /* Amber-600 */
+
+  /* Secondary Colors */
+  --color-secondary: #f43f5e; /* Rose-400 */
+  --color-secondary-light: #fecdd3; /* Rose-100 */
+
+  /* Neutral Colors */
+  --color-neutral: #2d2d2d; /* Mist-700 (dark for text) */
+  --color-neutral-light: #6b7280; /* Grey-500 */
+  --color-neutral-dark: #8b7355; /* Taupe-500 (nav background) */
+
+  /* Background Colors */
+  --color-background: #fbbf24; /* Amber-100 */
+  --color-background-dark: #1f2937; /* Dark background for pages */
+
+  /* Border Colors */
+  --color-border: #f43f5e; /* Rose-400 */
+}
+/* End of Color Scheme */
+
+.local-font {
+  font-family: 'Carrois Gothic SC', sans-serif;
+}
+
