@@ -11,17 +11,15 @@ interface SearchBarProps {
   onGenreChange?: (genre: 'all' | Genre) => void;
   onActorSearch?: (actorName: string) => void;
   selectedGenre?: 'all' | Genre;
-  isSearchActive: boolean;
   showGenreFilter?: boolean;
 }
 
-const SearchBar = ({ 
-  onSearch, 
-  onSort, 
+const SearchBar = ({
+  onSearch,
+  onSort,
   onGenreChange,
   onActorSearch,
   selectedGenre = 'all',
-  isSearchActive,
   showGenreFilter = false
 }: SearchBarProps) => {
   const { theme } = useTheme();

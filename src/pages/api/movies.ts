@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     let movies: Movie[] = [];
-    const apiKey = env.TMDB_API_KEY as string;
+    const apiKey = env.TMDB_API_KEY;
 
     // If an actor search query is provided, search for movies by actor
     if (actor && typeof actor === 'string' && actor.trim()) {

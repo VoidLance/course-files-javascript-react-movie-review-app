@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import MovieCard from './MovieCard';
 import SearchBar, { type SortBy, type SortOrder } from './SearchBar';
-import { type Movie, GENRES, type Genre, GENRE_TO_TMDB_IDS } from '../types/movie';
+import { type Movie, type Genre, GENRE_TO_TMDB_IDS } from '../types/movie';
 
 interface FilteredMoviePageProps {
   title: string;
@@ -24,9 +24,7 @@ const FilteredMoviePage = ({ title, apiType, genreIds, emptyMessage, showGenreFi
   const [sortBy, setSortBy] = useState<SortBy>('popularity');
   const [sortOrder, setSortOrder] = useState<SortOrder>('desc');
   const [minRating, setMinRating] = useState(0);
-  const [isSearchActive, setIsSearchActive] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState<'all' | Genre>('all');
-  const [currentGenreIds, setCurrentGenreIds] = useState<number[] | undefined>(genreIds);
 
   // Load movies from API
   useEffect(() => {
@@ -34,7 +32,7 @@ const FilteredMoviePage = ({ title, apiType, genreIds, emptyMessage, showGenreFi
       try {
         setLoading(true);
         let url = '/api/movies';
-        let idsToUse = currentGenreIds;
+        let idsToUse = genreIds;
 
         // If actor search is active, search by actor
         if (actorSearch.trim()) {
@@ -83,7 +81,7 @@ const FilteredMoviePage = ({ title, apiType, genreIds, emptyMessage, showGenreFi
     };
 
     void loadMovies();
-  }, [apiType, currentGenreIds, selectedGenre, showGenreFilter, emptyMessage, actorSearch]);
+  }, [apiType, genreIds, selectedGenre, showGenreFilter, emptyMessage, actorSearch]);
 
   // Apply filtering and sorting
   useEffect(() => {
@@ -96,12 +94,6 @@ const FilteredMoviePage = ({ title, apiType, genreIds, emptyMessage, showGenreFi
         movie.name.toLowerCase().includes(lowerSearch) ||
         movie.description.toLowerCase().includes(lowerSearch)
       );
-      setIsSearchActive(true);
-    } else if (actorSearch.trim()) {
-      // Actor search is active, results already sorted by cast prominence from API
-      setIsSearchActive(true);
-    } else {
-      setIsSearchActive(false);
     }
 
     // Apply minimum rating filter
@@ -176,11 +168,10 @@ const FilteredMoviePage = ({ title, apiType, genreIds, emptyMessage, showGenreFi
   return (
     <section className="flex w-full flex-col items-center gap-6">
       <h2 className={`text-2xl font-semibold ${isDark ? 'text-amber-100' : 'text-amber-100'}`}>{title}</h2>
-      <SearchBar 
-        onSearch={handleSearch} 
-        onSort={handleSort} 
+      <SearchBar
+        onSearch={handleSearch}
+        onSort={handleSort}
         onActorSearch={handleActorSearch}
-        isSearchActive={isSearchActive}
         onGenreChange={showGenreFilter ? handleGenreChange : undefined}
         selectedGenre={showGenreFilter ? selectedGenre : 'all'}
         showGenreFilter={showGenreFilter}

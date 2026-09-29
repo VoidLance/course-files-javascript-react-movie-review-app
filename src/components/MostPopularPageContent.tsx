@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import MovieCard from './MovieCard';
 import SearchBar, { type SortBy, type SortOrder } from './SearchBar';
-import { GENRES, type Genre, GENRE_TO_TMDB_IDS, type Movie } from '../types/movie';
+import { type Genre, GENRE_TO_TMDB_IDS, type Movie } from '../types/movie';
 
 const MostPopularPageContent = () => {
   const { theme } = useTheme();
@@ -17,7 +17,6 @@ const MostPopularPageContent = () => {
   const [sortBy, setSortBy] = useState<SortBy>('popularity');
   const [sortOrder, setSortOrder] = useState<SortOrder>('desc');
   const [minRating, setMinRating] = useState(0);
-  const [isSearchActive, setIsSearchActive] = useState(false);
 
   const showStatus = (message: string) => {
     setStatusMessage(message);
@@ -86,12 +85,6 @@ const MostPopularPageContent = () => {
         movie.name.toLowerCase().includes(lowerSearch) ||
         movie.description.toLowerCase().includes(lowerSearch)
       );
-      setIsSearchActive(true);
-    } else if (actorSearch.trim()) {
-      // Actor search is active, results already sorted by cast prominence from API
-      setIsSearchActive(true);
-    } else {
-      setIsSearchActive(false);
     }
 
     // Apply minimum rating filter
@@ -181,11 +174,10 @@ const MostPopularPageContent = () => {
       )}
       <div className="flex w-full flex-col gap-6">
         {/* SearchBar with integrated Genre Filter, Sorting and Rating Filter */}
-        <SearchBar 
-          onSearch={handleSearch} 
-          onSort={handleSort} 
+        <SearchBar
+          onSearch={handleSearch}
+          onSort={handleSort}
           onActorSearch={handleActorSearch}
-          isSearchActive={isSearchActive}
           onGenreChange={handleGenreChange}
           selectedGenre={selectedGenre}
           showGenreFilter={true}
