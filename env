@@ -1,0 +1,6 @@
+# Default environment variables for this repo.
+# This file is meant to be a template / fallback.
+# For local development, the real secret should live in .env.local.
+
+TMDB_API_KEY=your_tmdb_api_key_here
+NODE_ENV=production
