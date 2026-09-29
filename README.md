@@ -1,29 +1,102 @@
-# Create T3 App
+# Movie Review
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Movie Review is a Next.js and React app for discovering movies using data from
+[The Movie Database (TMDB)](https://www.themoviedb.org/). Browse popular and
+highly rated titles, explore genres, search by movie or actor, and open a movie's
+TMDB page for more information.
 
-## What's next? How do I make an app with this?
+## Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- Popular, highly rated, and genre-specific movie pages
+- Movie-title and actor searches powered by TMDB
+- Client-side filtering by genre and minimum rating
+- Sorting by popularity, rating, release date, or title
+- Light and dark themes
+- Responsive movie cards with posters, descriptions, genres, and ratings
+- TypeScript, Tailwind CSS, and Next.js API routes
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+Movie ratings are sourced from TMDB and displayed as read-only values.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## Getting started
 
-## Learn More
+### Prerequisites
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+- [Bun](https://bun.sh/) or Node.js with npm
+- A [TMDB API key](https://www.themoviedb.org/settings/api)
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+### Install and configure
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+```bash
+git clone https://github.com/VoidLance/course-files-javascript-react-movie-review-app.git
+cd course-files-javascript-react-movie-review-app
+bun install
+cp .env.example .env
+```
 
-## How do I deploy this?
+Open `.env` and add your TMDB key:
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+```dotenv
+TMDB_API_KEY="your-tmdb-api-key"
+```
+
+The key is used by the server-side `/api/movies` route and should not be
+committed.
+
+### Run locally
+
+Start the development server:
+
+```bash
+bun run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser. The main
+navigation includes:
+
+- `/most-popular` — popular movies
+- `/highly-rated` — top-rated movies with genre filters
+- `/action`, `/fantasy`, `/romance`, and `/comedy` — genre pages
+
+To create and run a production build:
+
+```bash
+bun run build
+bun run start
+```
+
+If you use npm, replace `bun install` with `npm install` and `bun run <script>`
+with `npm run <script>`.
+
+## Project commands
+
+| Command | Description |
+| --- | --- |
+| `bun run dev` | Start Next.js in development mode |
+| `bun run build` | Create a production build |
+| `bun run start` | Serve the production build |
+| `bun run typecheck` | Run the TypeScript compiler without emitting files |
+| `bun run check` | Run linting and TypeScript checks |
+| `bun run format:check` | Check formatting with Prettier |
+| `bun run format:write` | Format supported source files |
+
+## Support and documentation
+
+- Read the [Next.js documentation](https://nextjs.org/docs)
+- Read the [TMDB API documentation](https://developer.themoviedb.org/docs)
+- [Open an issue](https://github.com/VoidLance/course-files-javascript-react-movie-review-app/issues)
+  for bugs or feature requests
+
+When reporting an issue, include the page or command involved, the expected
+behavior, and the relevant error output without sharing your API key.
+
+## Contributing and maintenance
+
+The project is maintained by [VoidLance](https://github.com/VoidLance).
+Contributions are welcome: open an issue to discuss a substantial change, then
+submit a focused pull request with a clear description and validation steps.
+Please keep secrets such as `.env` files out of commits.
+
+## Attribution
+
+Movie metadata and images are provided by [TMDB](https://www.themoviedb.org/).
+This product uses the TMDB API but is not endorsed or certified by TMDB.
